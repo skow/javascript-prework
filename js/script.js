@@ -1,55 +1,55 @@
 let roundNumber = Math.floor(Math.random() * 3 + 1);
-let computerMove = 'nieznany ruch';
 
-if(roundNumber == 1) {
-	computerMove = 'kamień';
-}
-else if(roundNumber == 2) {
-	computerMove = 'papier';
-}
-else if(roundNumber == 3) {
-	computerMove = 'nożyce';
+function getMoveName(argMoveId){
+  if(argMoveId == 1){
+    return 'kamień';
+  }
+  else if(argMoveId == 2){
+    return 'papier';
+  }
+  else if(argMoveId == 3){
+    return 'nożyce';
+  }
+  else {
+    printMessage('Nie znam ruchu o id ' + argMoveId + '.');
+    return 'nieznany ruch';
+  }
 }
 
-console.log('Ruch komputera to: ' + computerMove);
+function displayResult(argComputerMove, argPlayerMove){
+	
+	let winner = 'Nieznany zwyciężca';
+	let infoComputerWin = 'Twój ruch to: <b>' + argPlayerMove + '</b>. Ruch komputera to: <b>' + argComputerMove + '</b>. Komputer wygrywa';
+	let infoPlayerWin = 'Twój ruch to: <b>' + argPlayerMove + '</b>. Ruch komputera to: <b>' + argComputerMove + '</b>. Ty Wygrywasz';
+	
+	if((argComputerMove == 'kamień' && argPlayerMove == 'kamień') || (argComputerMove == 'papier' && argPlayerMove == 'papier') || (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce')) {
+		winner = 'Padł remis. Oboje wybraliście: <b>' + argComputerMove + '</b>';
+	}
+	else if(argComputerMove == 'kamień' && argPlayerMove == 'papier') {
+		winner = infoPlayerWin;
+	}
+	else if(argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
+		winner = infoComputerWin;
+	}
+	else if(argComputerMove == 'papier' && argPlayerMove == 'kamień') {
+		winner = infoComputerWin;
+	}
+	else if(argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
+		winner = infoPlayerWin;
+	}
+	else if(argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
+		winner = infoPlayerWin;
+	}
+	else if(argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
+		winner = infoComputerWin;
+	}
+	
+	return winner;
+}
 
+let computerMove = getMoveName(roundNumber);
 let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce');
-let playerMove = 'nieznany ruch';
+let playerMove = getMoveName(playerInput);
 
-if(playerInput == 1) {
-	playerMove = 'kamień';
-}
-else if(playerInput == 2) {
-	playerMove = 'papier';
-}
-else if(playerInput == 3) {
-	playerMove = 'nożyce';
-}
+printMessage(displayResult(computerMove, playerMove));
 
-printMessage('Twój ruch to: ' + playerMove);
-
-let winner = 'Nieznany zwyciężca';
-
-if((computerMove == 'kamień' && playerMove == 'kamień') || (computerMove == 'papier' && playerMove == 'papier') || (computerMove == 'nożyce' && playerMove == 'nożyce')) {
-	winner = 'Padł remis. Oboje wybraliście: ' + computerMove;
-}
-else if(computerMove == 'kamień' && playerMove == 'papier') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
-}
-else if(computerMove == 'kamień' && playerMove == 'nożyce') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
-}
-else if(computerMove == 'papier' && playerMove == 'kamień') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
-}
-else if(computerMove == 'papier' && playerMove == 'nożyce') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
-}
-else if(computerMove == 'nożyce' && playerMove == 'kamień') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
-}
-else if(computerMove == 'nożyce' && playerMove == 'papier') {
-	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
-}
-
-printMessage('<br><b>' + winner + '</b>');
