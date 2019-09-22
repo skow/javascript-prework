@@ -26,4 +26,30 @@ else if(playerInput == 3) {
 	playerMove = 'nożyce';
 }
 
-console.log('Twój ruch to: ' + playerMove);
+printMessage('Twój ruch to: ' + playerMove);
+
+let winner = 'Nieznany zwyciężca';
+
+if((computerMove == 'kamień' && playerMove == 'kamień') || (computerMove == 'papier' && playerMove == 'papier') || (computerMove == 'nożyce' && playerMove == 'nożyce')) {
+	winner = 'Padł remis. Oboje wybraliście: ' + computerMove;
+}
+else if(computerMove == 'kamień' && playerMove == 'papier') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
+}
+else if(computerMove == 'kamień' && playerMove == 'nożyce') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
+}
+else if(computerMove == 'papier' && playerMove == 'kamień') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
+}
+else if(computerMove == 'papier' && playerMove == 'nożyce') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
+}
+else if(computerMove == 'nożyce' && playerMove == 'kamień') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Ty Wygrywasz';
+}
+else if(computerMove == 'nożyce' && playerMove == 'papier') {
+	winner = 'Ruch komputera to: ' + computerMove + ' Komputer wygrywa';
+}
+
+printMessage('<br><b>' + winner + '</b>');
