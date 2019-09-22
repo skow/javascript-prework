@@ -1,6 +1,5 @@
 let roundNumber = Math.floor(Math.random() * 3 + 1);
-let computerMove;
-
+let computerMove = 'nieznany ruch';
 
 if(roundNumber == 1) {
 	computerMove = 'kamień';
@@ -11,8 +10,20 @@ else if(roundNumber == 2) {
 else if(roundNumber == 3) {
 	computerMove = 'nożyce';
 }
-else {
-	computerMove = 'nienznay ruch';
+
+console.log('Ruch komputera to: ' + computerMove);
+
+let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce');
+let playerMove = 'nieznany ruch';
+
+if(playerInput == 1) {
+	playerMove = 'kamień';
+}
+else if(playerInput == 2) {
+	playerMove = 'papier';
+}
+else if(playerInput == 3) {
+	playerMove = 'nożyce';
 }
 
-printMessage('Ruch komputera to: ' + computerMove);
+console.log('Twój ruch to: ' + playerMove);
