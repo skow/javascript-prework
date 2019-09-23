@@ -1,16 +1,9 @@
-
-
-function playGame(playerInput) {
-	
+function playGame(playerInput){
 	clearMessages();
-	
 	let roundNumber = Math.floor(Math.random() * 3 + 1);
 	let computerMove = getMoveName(roundNumber);
-	// let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce');
 	let playerMove = getMoveName(playerInput);
 	printMessage(displayResult(computerMove, playerMove));
-	
-	
 }
 
 document.getElementById('play-rock').addEventListener('click', function(){

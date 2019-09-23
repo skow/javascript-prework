@@ -25,32 +25,23 @@ function getMoveName(argMoveId){
 }
 
 function displayResult(argComputerMove, argPlayerMove){
-	
 	let winner = 'Nieznany zwyciężca';
 	let infoComputerWin = 'Twój ruch to: <b>' + argPlayerMove + '</b>. Ruch komputera to: <b>' + argComputerMove + '</b>. Komputer wygrywa';
 	let infoPlayerWin = 'Twój ruch to: <b>' + argPlayerMove + '</b>. Ruch komputera to: <b>' + argComputerMove + '</b>. Ty Wygrywasz';
 	
-	if((argComputerMove == 'kamień' && argPlayerMove == 'kamień') || (argComputerMove == 'papier' && argPlayerMove == 'papier') || (argComputerMove == 'nożyce' && argPlayerMove == 'nożyce')) {
+	if(argComputerMove == argPlayerMove){
 		winner = 'Padł remis. Oboje wybraliście: <b>' + argComputerMove + '</b>';
 	}
-	else if(argComputerMove == 'kamień' && argPlayerMove == 'papier') {
+	else if(
+		(argComputerMove == 'kamień' && argPlayerMove == 'papier') ||
+		(argComputerMove == 'papier' && argPlayerMove == 'nożyce') ||
+		(argComputerMove == 'nożyce' && argPlayerMove == 'kamień')){
+			
 		winner = infoPlayerWin;
 	}
-	else if(argComputerMove == 'kamień' && argPlayerMove == 'nożyce') {
+	else {
 		winner = infoComputerWin;
 	}
-	else if(argComputerMove == 'papier' && argPlayerMove == 'kamień') {
-		winner = infoComputerWin;
-	}
-	else if(argComputerMove == 'papier' && argPlayerMove == 'nożyce') {
-		winner = infoPlayerWin;
-	}
-	else if(argComputerMove == 'nożyce' && argPlayerMove == 'kamień') {
-		winner = infoPlayerWin;
-	}
-	else if(argComputerMove == 'nożyce' && argPlayerMove == 'papier') {
-		winner = infoComputerWin;
-	}
-	
 	return winner;
 }
+
